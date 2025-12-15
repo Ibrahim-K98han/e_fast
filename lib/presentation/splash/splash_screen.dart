@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   goToNext() {
-    Future.delayed(const Duration(seconds: 10), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushNamedAndRemoveUntil(
         context,
         RouteNames.onBoardingScreen,

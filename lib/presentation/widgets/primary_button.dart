@@ -7,13 +7,13 @@ import 'custom_text.dart';
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     Key? key,
-    this.maximumSize = const Size(double.infinity, 52),
+    this.maximumSize = const Size(double.infinity, 48),
     required this.text,
     this.fontSize = 14.0,
     required this.onPressed,
     this.textColor = whiteColor,
     this.bgColor = primaryColor,
-    this.minimumSize = const Size(double.infinity, 52),
+    this.minimumSize = const Size(double.infinity, 48),
     this.borderRadiusSize = 10.0,
   }) : super(key: key);
 

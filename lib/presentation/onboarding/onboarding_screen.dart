@@ -5,6 +5,7 @@ import 'package:e_fast/presentation/utils/utils.dart';
 import 'package:e_fast/presentation/widgets/custom_images.dart';
 import 'package:e_fast/presentation/widgets/custom_text.dart';
 import 'package:e_fast/presentation/widgets/primary_button.dart';
+import 'package:e_fast/routes/route_name.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -58,18 +59,27 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 Utils.verticalSpace(16.0),
                 Padding(
                   padding: Utils.symmetric(),
-                  child: Container(
-                    height: 52.0,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: primaryColor),
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: Center(
-                      child: CustomText(
-                        text: 'Login',
-                        color: primaryColor,
-                        fontWeight: FontWeight.w700,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        RouteNames.loginScreen,
+                        (route) => false,
+                      );
+                    },
+                    child: Container(
+                      height: 52.0,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: primaryColor),
+                        borderRadius: BorderRadius.circular(4.0),
+                      ),
+                      child: Center(
+                        child: CustomText(
+                          text: 'Login',
+                          color: primaryColor,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
@@ -119,7 +129,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           CustomText(
             text: item.title,
-            fontSize: 24.0,
+            fontSize: 22.0,
             fontWeight: FontWeight.w700,
             textAlign: TextAlign.start,
             color: blackColor,
@@ -152,35 +162,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
         );
       }),
-    );
-  }
-
-  Widget _buildSkipButton() {
-    return Row(
-      children: [
-        const Spacer(),
-        CustomImage(
-          path: AppImage.appLogo,
-          height: Utils.vSize(80.0),
-          width: Utils.vSize(100.0),
-        ),
-        const Spacer(),
-        GestureDetector(
-          // onTap:
-          //     () => Navigator.pushNamedAndRemoveUntil(
-          //       context,
-          //       RouteNames.loginScreen,
-          //       (route) => false,
-          //     ),
-          child: const CustomText(
-            text: 'Skip',
-            fontWeight: FontWeight.w400,
-            fontSize: 18.0,
-            color: primaryColor,
-            textAlign: TextAlign.right,
-          ),
-        ),
-      ],
     );
   }
 }
