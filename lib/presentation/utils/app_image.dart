@@ -3,6 +3,7 @@ class AppImage {
   static const String one = "assets/images/1.png";
   static const String two = "assets/images/2.png";
   static const String three = "assets/images/3.png";
+  static const String banner = "assets/images/banne.png";
 
   static const String kNetworkImage = "https://picsum.photos/320";
 }
