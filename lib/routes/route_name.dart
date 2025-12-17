@@ -2,7 +2,9 @@ import 'package:e_fast/presentation/auth/login_screen.dart';
 import 'package:e_fast/presentation/balance_details/balance_details_screen.dart';
 import 'package:e_fast/presentation/main/main_screen.dart';
 import 'package:e_fast/presentation/onboarding/onboarding_screen.dart';
+import 'package:e_fast/presentation/parcel/parcel_screen.dart';
 import 'package:e_fast/presentation/splash/splash_screen.dart';
+import 'package:e_fast/presentation/summary/summary_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteNames {
@@ -11,6 +13,8 @@ class RouteNames {
   static const String loginScreen = '/loginScreen';
   static const String mainScreen = '/mainScreen';
   static const String balanceDetailsScreen = '/balanceDetailsScreen';
+  static const String parcelScree = '/parcelScreen';
+  static const String summaryScreen = '/summaryScreen';
 
   static Route<dynamic> generateRoutes(RouteSettings settings) {
     switch (settings.name) {
@@ -40,6 +44,16 @@ class RouteNames {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const BalanceDetailsScreen(),
+        );
+      case RouteNames.parcelScree:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ParcelScreen(),
+        );
+      case RouteNames.summaryScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const SummaryScreen(),
         );
 
       default:
