@@ -1,8 +1,11 @@
+import 'package:e_fast/presentation/home/component/custom_drawer.dart';
+import 'package:e_fast/presentation/home/component/header_section.dart';
 import 'package:e_fast/presentation/main/component/banner_slider.dart';
 import 'package:e_fast/presentation/utils/app_color.dart';
 import 'package:e_fast/presentation/utils/app_image.dart';
 import 'package:e_fast/presentation/utils/utils.dart';
 import 'package:e_fast/presentation/widgets/custom_images.dart';
+import 'package:e_fast/presentation/widgets/custom_text.dart';
 import 'package:e_fast/routes/route_name.dart';
 import 'package:flutter/material.dart';
 
@@ -13,17 +16,15 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  bool showBalance = false;
-  bool showDetails = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: _buildDrawer(),
+      drawer: CustomDrawer(),
       body: Stack(
         children: [
           Container(
@@ -32,152 +33,41 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: Utils.only(left: 20.0, right: 20.0, top: 50.0),
+                  padding: Utils.only(left: 20.0, right: 20.0, top: 60.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
-                        onTap: () => _scaffoldKey.currentState?.openDrawer(),
-                        child: const Icon(
-                          Icons.menu,
-                          color: Colors.white,
-                          size: 28,
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0,
-                          vertical: 4.0,
-                        ),
-                        decoration: BoxDecoration(
-                          color: whiteColor,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  showBalance = true;
-                                  showDetails = true;
-                                });
-
-                                Future.delayed(const Duration(seconds: 5), () {
-                                  if (mounted) {
-                                    setState(() {
-                                      showBalance = false;
-                                      showDetails = false;
-                                    });
-                                  }
-                                });
-                              },
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 24,
-                                    height: 24,
-                                    decoration: const BoxDecoration(
-                                      color: primaryColor,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Center(
-                                      child: Text(
-                                        '৳',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-
-                                  AnimatedSwitcher(
-                                    duration: const Duration(milliseconds: 400),
-                                    transitionBuilder: (child, animation) {
-                                      return FadeTransition(
-                                        opacity: animation,
-                                        child: child,
-                                      );
-                                    },
-                                    child: Text(
-                                      showBalance ? '100' : 'Tap for Balance',
-                                      key: ValueKey(showBalance),
-                                      style: const TextStyle(
-                                        color: primaryColor,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                      Row(
+                        children: [
+                          InkWell(
+                            onTap: () =>
+                                _scaffoldKey.currentState?.openDrawer(),
+                            child: const Icon(
+                              Icons.menu,
+                              color: Colors.white,
+                              size: 28,
                             ),
-
-                            AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 500),
-                              transitionBuilder: (child, animation) {
-                                final slide = Tween<Offset>(
-                                  begin: const Offset(0.3, 0),
-                                  end: Offset.zero,
-                                ).animate(animation);
-
-                                return FadeTransition(
-                                  opacity: animation,
-                                  child: SlideTransition(
-                                    position: slide,
-                                    child: child,
-                                  ),
-                                );
-                              },
-                              child: showDetails
-                                  ? Padding(
-                                      key: const ValueKey("details"),
-                                      padding: const EdgeInsets.only(left: 12),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.pushNamed(
-                                            context,
-                                            RouteNames.balanceDetailsScreen,
-                                          );
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 12,
-                                            vertical: 6,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: primaryColor,
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                          ),
-                                          child: const Text(
-                                            "Details",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  : const SizedBox.shrink(),
-                            ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(width: 10.0),
+                          HeaderSection(),
+                        ],
                       ),
 
                       Row(
                         children: const [
-                          Icon(Icons.search, color: Colors.white, size: 24),
+                          CustomImage(
+                            path: AppImage.notification,
+                            width: 20,
+                            height: 20,
+                            color: whiteColor,
+                          ),
                           SizedBox(width: 12),
-                          Icon(
-                            Icons.notifications_outlined,
-                            color: Colors.white,
-                            size: 24,
+
+                          CustomImage(
+                            path: AppImage.search,
+                            width: 20,
+                            height: 20,
+                            color: whiteColor,
                           ),
                         ],
                       ),
@@ -218,78 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildDrawer() {
-    return Drawer(
-      shape: BeveledRectangleBorder(
-        borderRadius: BorderRadiusGeometry.circular(0),
-      ),
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF14B8A6), Color(0xFF0F766E)],
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: const Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Color(0xFF14B8A6),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                const Text(
-                  'Welcome!',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Text(
-                  'user@example.com',
-                  style: TextStyle(color: Colors.white70, fontSize: 14),
-                ),
-              ],
-            ),
-          ),
-          _buildDrawerItem(Icons.home, 'Home', () => Navigator.pop(context)),
-          _buildDrawerItem(Icons.person, 'Profile', () {}),
-          _buildDrawerItem(Icons.inventory_2, 'My Parcels', () {}),
-          _buildDrawerItem(Icons.account_balance_wallet, 'Wallet', () {}),
-          _buildDrawerItem(Icons.history, 'Order History', () {}),
-          _buildDrawerItem(Icons.notifications, 'Notifications', () {}),
-          const Divider(),
-          _buildDrawerItem(Icons.settings, 'Settings', () {}),
-          _buildDrawerItem(Icons.help_outline, 'Help & Support', () {}),
-          _buildDrawerItem(Icons.info_outline, 'About', () {}),
-          _buildDrawerItem(Icons.logout, 'Logout', () {}),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDrawerItem(IconData icon, String title, VoidCallback onTap) {
-    return ListTile(
-      leading: Icon(icon, color: const Color(0xFF14B8A6)),
-      title: Text(title),
-      onTap: onTap,
-      trailing: const Icon(Icons.chevron_right, color: Colors.grey),
-    );
-  }
-
   Widget _buildHomeContent() {
     return Padding(
       padding: Utils.only(top: 10.0),
@@ -307,34 +125,42 @@ class _HomeScreenState extends State<HomeScreen> {
                       Icons.add_box_outlined,
                       'Add\nParcel',
                       const Color(0xFF14B8A6),
+                      Color(0xFF14B8A6).withOpacity(0.1),
                       () {},
+                      FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: _buildMenuItem(
                       Icons.inventory_2_outlined,
                       'Pickup\nRequest',
                       const Color(0xFFF97316),
+                      Color(0xFFF97316).withOpacity(0.1),
                       () {},
+                      FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: _buildMenuItem(
                       Icons.flash_on_outlined,
                       'Express\nDelivery',
                       const Color(0xFF3B82F6),
+                      Color(0xFF3B82F6).withOpacity(0.1),
                       () {},
+                      FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: _buildMenuItem(
                       Icons.location_on_outlined,
                       'Pick &\nDrop',
                       const Color(0xFFEF4444),
+                      Color(0xFFEF4444).withOpacity(0.1),
                       () {},
+                      FontWeight.w500,
                     ),
                   ),
                 ],
@@ -358,49 +184,57 @@ class _HomeScreenState extends State<HomeScreen> {
                             Icons.inventory_outlined,
                             'Parcels',
                             const Color(0xFFF97316),
+                            Colors.transparent,
                             () {
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.parcelScree,
                               );
                             },
+                            FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: _buildMenuItem(
                             Icons.description_outlined,
                             'Summary',
                             const Color(0xFF14B8A6),
+                            Colors.transparent,
                             () {
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.summaryScreen,
                               );
                             },
+                            FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: _buildMenuItem(
                             Icons.account_balance_wallet_outlined,
                             'Payments',
                             const Color(0xFF14B8A6),
+                            Colors.transparent,
                             () {},
+                            FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: _buildMenuItem(
                             Icons.add_circle_outline,
                             'Add Balance',
                             const Color(0xFF10B981),
+                            Colors.transparent,
                             () {},
+                            FontWeight.normal,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         Expanded(
@@ -408,34 +242,42 @@ class _HomeScreenState extends State<HomeScreen> {
                             Icons.schedule_outlined,
                             'Latest RTNs',
                             const Color(0xFFF97316),
+                            Colors.transparent,
                             () {},
+                            FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: _buildMenuItem(
                             Icons.cancel_outlined,
                             'Cancellation',
                             const Color(0xFFEF4444),
+                            Colors.transparent,
                             () {},
+                            FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: _buildMenuItem(
                             Icons.warning_amber_outlined,
                             'Fraud Check',
                             const Color(0xFFDC2626),
+                            Colors.transparent,
                             () {},
+                            FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 4),
                         Expanded(
                           child: _buildMenuItem(
                             Icons.confirmation_number_outlined,
                             'Tickets',
                             const Color(0xFFF97316),
+                            Colors.transparent,
                             () {},
+                            FontWeight.normal,
                           ),
                         ),
                       ],
@@ -459,34 +301,42 @@ class _HomeScreenState extends State<HomeScreen> {
                         Icons.support_agent_outlined,
                         'Support',
                         const Color(0xFF3B82F6),
+                        Colors.transparent,
                         () {},
+                        FontWeight.normal,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 4),
                     Expanded(
                       child: _buildMenuItem(
                         Icons.place_outlined,
                         'Pickup Points',
                         const Color(0xFF14B8A6),
+                        Colors.transparent,
                         () {},
+                        FontWeight.normal,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 4),
                     Expanded(
                       child: _buildMenuItem(
                         Icons.public_outlined,
                         'Coverage',
                         const Color(0xFF2563EB),
+                        Colors.transparent,
                         () {},
+                        FontWeight.normal,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 4),
                     Expanded(
                       child: _buildMenuItem(
                         Icons.calculate_outlined,
                         'Pricing',
                         const Color(0xFF9333EA),
+                        Colors.transparent,
                         () {},
+                        FontWeight.normal,
                       ),
                     ),
                   ],
@@ -494,12 +344,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            const SizedBox(height: 12),
+            const SizedBox(height: 20),
             Padding(
               padding: Utils.symmetric(),
               child: CustomImage(path: AppImage.banner),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
           ],
         ),
       ),
@@ -510,24 +360,35 @@ class _HomeScreenState extends State<HomeScreen> {
     IconData icon,
     String label,
     Color color,
+    Color bgColor,
     VoidCallback onTap,
+    FontWeight fontWeight,
   ) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: Utils.symmetric(h: 4.0, v: 8.0),
+        padding: Utils.symmetric(h: 2.0, v: 8.0),
         decoration: BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Column(
+          mainAxisSize: .min,
           children: [
-            Icon(icon, color: color, size: 32),
-            const SizedBox(height: 8),
-            Text(
-              label,
+            Container(
+              padding: Utils.all(value: 3.0),
+              decoration: BoxDecoration(
+                color: bgColor,
+                borderRadius: BorderRadius.circular(4.0),
+              ),
+              child: Icon(icon, color: color, size: 28),
+            ),
+            const SizedBox(height: 4),
+            CustomText(
+              text: label,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey[700], fontSize: 11),
+              fontSize: 12,
+              fontWeight: fontWeight,
             ),
           ],
         ),
