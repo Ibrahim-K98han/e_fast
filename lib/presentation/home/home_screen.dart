@@ -344,10 +344,22 @@ class _HomeScreenState extends State<HomeScreen>
               ),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             Padding(
               padding: Utils.symmetric(),
-              child: CustomImage(path: AppImage.banner),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0),
+                height: 50,
+                decoration: BoxDecoration(
+                  color: whiteColor,
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+                child: CustomImage(
+                  path: AppImage.appLogo,
+                  fit: BoxFit.fill,
+                  width: double.infinity,
+                ),
+              ),
             ),
             const SizedBox(height: 40),
           ],
