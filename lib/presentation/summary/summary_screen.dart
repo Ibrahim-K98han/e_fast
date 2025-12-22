@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:e_fast/presentation/utils/app_color.dart';
 import 'package:e_fast/presentation/utils/utils.dart';
+import 'package:e_fast/presentation/widgets/custom_appbar.dart';
 import 'package:e_fast/presentation/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -20,23 +21,8 @@ class _SummaryScreenState extends State<SummaryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: primaryColor,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
-        ),
-        title: const Text(
-          'Summary',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(title: 'Summary'),
+
       body: Padding(
         padding: Utils.symmetric(v: 10.0),
         child: Column(

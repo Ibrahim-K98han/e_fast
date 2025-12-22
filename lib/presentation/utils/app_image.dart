@@ -6,6 +6,7 @@ class AppImage {
   static const String banner = "assets/images/banne.png";
   static const String search = "assets/images/bell.png";
   static const String notification = "assets/images/search.png";
+  static const String parcel = "assets/images/parcel.png";
 
   static const String kNetworkImage = "https://picsum.photos/320";
 }

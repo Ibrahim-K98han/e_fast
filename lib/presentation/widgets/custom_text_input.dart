@@ -1,8 +1,5 @@
-import 'package:e_fast/presentation/utils/app_color.dart';
-import 'package:e_fast/presentation/widgets/custom_images.dart';
 import 'package:flutter/material.dart';
 import '../utils/utils.dart';
-import 'custom_text.dart';
 
 class CustomTextInput extends StatelessWidget {
   final String label;

@@ -1,6 +1,11 @@
+import 'package:e_fast/presentation/add_parcel/add_parcel_screen.dart';
 import 'package:e_fast/presentation/home/component/custom_drawer.dart';
 import 'package:e_fast/presentation/home/component/header_section.dart';
 import 'package:e_fast/presentation/main/component/banner_slider.dart';
+import 'package:e_fast/presentation/parcel/parcel_screen.dart';
+import 'package:e_fast/presentation/pickup/pickup_request.dart';
+import 'package:e_fast/presentation/pickup_and_drop/pickup_drop_screen.dart';
+import 'package:e_fast/presentation/summary/summary_screen.dart';
 import 'package:e_fast/presentation/utils/app_color.dart';
 import 'package:e_fast/presentation/utils/app_image.dart';
 import 'package:e_fast/presentation/utils/utils.dart';
@@ -8,6 +13,7 @@ import 'package:e_fast/presentation/widgets/custom_images.dart';
 import 'package:e_fast/presentation/widgets/custom_text.dart';
 import 'package:e_fast/routes/route_name.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -126,7 +132,13 @@ class _HomeScreenState extends State<HomeScreen>
                       'Add\nParcel',
                       const Color(0xFF14B8A6),
                       Color(0xFF14B8A6).withOpacity(0.1),
-                      () {},
+                      () {
+                        PersistentNavBarNavigator.pushNewScreen(
+                          context,
+                          screen: const AddParcelScreen(),
+                          withNavBar: false,
+                        );
+                      },
                       FontWeight.w500,
                     ),
                   ),
@@ -137,7 +149,13 @@ class _HomeScreenState extends State<HomeScreen>
                       'Pickup\nRequest',
                       const Color(0xFFF97316),
                       Color(0xFFF97316).withOpacity(0.1),
-                      () {},
+                      () {
+                        PersistentNavBarNavigator.pushNewScreen(
+                          context,
+                          screen: const PickupRequest(),
+                          withNavBar: false,
+                        );
+                      },
                       FontWeight.w500,
                     ),
                   ),
@@ -148,7 +166,13 @@ class _HomeScreenState extends State<HomeScreen>
                       'Express\nDelivery',
                       const Color(0xFF3B82F6),
                       Color(0xFF3B82F6).withOpacity(0.1),
-                      () {},
+                      () {
+                        PersistentNavBarNavigator.pushNewScreen(
+                          context,
+                          screen: const AddParcelScreen(),
+                          withNavBar: false,
+                        );
+                      },
                       FontWeight.w500,
                     ),
                   ),
@@ -159,7 +183,13 @@ class _HomeScreenState extends State<HomeScreen>
                       'Pick &\nDrop',
                       const Color(0xFFEF4444),
                       Color(0xFFEF4444).withOpacity(0.1),
-                      () {},
+                      () {
+                        PersistentNavBarNavigator.pushNewScreen(
+                          context,
+                          screen: const PickupDropScreen(),
+                          withNavBar: false,
+                        );
+                      },
                       FontWeight.w500,
                     ),
                   ),
@@ -186,11 +216,13 @@ class _HomeScreenState extends State<HomeScreen>
                             const Color(0xFFF97316),
                             Colors.transparent,
                             () {
-                              Navigator.pushNamed(
+                              PersistentNavBarNavigator.pushNewScreen(
                                 context,
-                                RouteNames.parcelScree,
+                                screen: const ParcelScreen(),
+                                withNavBar: false,
                               );
                             },
+
                             FontWeight.normal,
                           ),
                         ),
@@ -202,11 +234,13 @@ class _HomeScreenState extends State<HomeScreen>
                             const Color(0xFF14B8A6),
                             Colors.transparent,
                             () {
-                              Navigator.pushNamed(
+                              PersistentNavBarNavigator.pushNewScreen(
                                 context,
-                                RouteNames.summaryScreen,
+                                screen: const SummaryScreen(),
+                                withNavBar: false,
                               );
                             },
+
                             FontWeight.normal,
                           ),
                         ),
