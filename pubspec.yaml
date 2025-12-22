@@ -37,6 +37,11 @@ dependencies:
   flutter_svg: ^2.0.7
   google_fonts: ^6.1.0
   flutter_screenutil: ^5.9.0
+  carousel_slider: ^5.1.1
+  persistent_bottom_nav_bar: ^6.2.1
+  dotted_line: ^3.2.2
+  persistent_bottom_nav_bar_v2: ^6.2.0
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:

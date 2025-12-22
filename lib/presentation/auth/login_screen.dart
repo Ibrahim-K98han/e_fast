@@ -3,6 +3,7 @@ import 'package:e_fast/presentation/utils/app_color.dart';
 import 'package:e_fast/presentation/utils/utils.dart';
 import 'package:e_fast/presentation/widgets/custom_text.dart';
 import 'package:e_fast/presentation/widgets/primary_button.dart';
+import 'package:e_fast/routes/route_name.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -47,7 +48,9 @@ class LoginScreen extends StatelessWidget {
                     Utils.verticalSpace(30.0),
                     PrimaryButton(
                       text: 'Login',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, RouteNames.mainScreen);
+                      },
                       borderRadiusSize: 4.0,
                     ),
                     Utils.verticalSpace(20.0),
