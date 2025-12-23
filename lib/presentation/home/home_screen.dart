@@ -1,10 +1,15 @@
+import 'package:e_fast/presentation/add_balance/add_balance_screen.dart';
 import 'package:e_fast/presentation/add_parcel/add_parcel_screen.dart';
+import 'package:e_fast/presentation/cancellation/cancellation_screen.dart';
+import 'package:e_fast/presentation/fraud_check/fraud_check_screen.dart';
 import 'package:e_fast/presentation/home/component/custom_drawer.dart';
 import 'package:e_fast/presentation/home/component/header_section.dart';
 import 'package:e_fast/presentation/main/component/banner_slider.dart';
 import 'package:e_fast/presentation/parcel/parcel_screen.dart';
+import 'package:e_fast/presentation/payment/payment_screen.dart';
 import 'package:e_fast/presentation/pickup/pickup_request.dart';
 import 'package:e_fast/presentation/pickup_and_drop/pickup_drop_screen.dart';
+import 'package:e_fast/presentation/return_list/returan_list_screen.dart';
 import 'package:e_fast/presentation/summary/summary_screen.dart';
 import 'package:e_fast/presentation/utils/app_color.dart';
 import 'package:e_fast/presentation/utils/app_image.dart';
@@ -251,7 +256,13 @@ class _HomeScreenState extends State<HomeScreen>
                             'Payments',
                             const Color(0xFF14B8A6),
                             Colors.transparent,
-                            () {},
+                            () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: const PaymentScreen(),
+                                withNavBar: false,
+                              );
+                            },
                             FontWeight.normal,
                           ),
                         ),
@@ -262,7 +273,13 @@ class _HomeScreenState extends State<HomeScreen>
                             'Add Balance',
                             const Color(0xFF10B981),
                             Colors.transparent,
-                            () {},
+                            () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: const AddBalanceScreen(),
+                                withNavBar: false,
+                              );
+                            },
                             FontWeight.normal,
                           ),
                         ),
@@ -277,7 +294,13 @@ class _HomeScreenState extends State<HomeScreen>
                             'Latest RTNs',
                             const Color(0xFFF97316),
                             Colors.transparent,
-                            () {},
+                            () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: const ReturnListScreen(),
+                                withNavBar: false,
+                              );
+                            },
                             FontWeight.normal,
                           ),
                         ),
@@ -288,7 +311,13 @@ class _HomeScreenState extends State<HomeScreen>
                             'Cancellation',
                             const Color(0xFFEF4444),
                             Colors.transparent,
-                            () {},
+                            () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: const CancellationScreen(),
+                                withNavBar: false,
+                              );
+                            },
                             FontWeight.normal,
                           ),
                         ),
@@ -299,7 +328,13 @@ class _HomeScreenState extends State<HomeScreen>
                             'Fraud Check',
                             const Color(0xFFDC2626),
                             Colors.transparent,
-                            () {},
+                            () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: const FraudCheckScreen(),
+                                withNavBar: false,
+                              );
+                            },
                             FontWeight.normal,
                           ),
                         ),
