@@ -1,4 +1,3 @@
-import 'dart:ui' as BorderType;
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:dotted_line/dotted_line.dart';
