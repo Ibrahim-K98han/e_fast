@@ -11,12 +11,13 @@ import 'package:e_fast/presentation/pickup/pickup_request.dart';
 import 'package:e_fast/presentation/pickup_and_drop/pickup_drop_screen.dart';
 import 'package:e_fast/presentation/return_list/returan_list_screen.dart';
 import 'package:e_fast/presentation/summary/summary_screen.dart';
+import 'package:e_fast/presentation/support/support_screen.dart';
+import 'package:e_fast/presentation/tickets/tickets_screen.dart';
 import 'package:e_fast/presentation/utils/app_color.dart';
 import 'package:e_fast/presentation/utils/app_image.dart';
 import 'package:e_fast/presentation/utils/utils.dart';
 import 'package:e_fast/presentation/widgets/custom_images.dart';
 import 'package:e_fast/presentation/widgets/custom_text.dart';
-import 'package:e_fast/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -345,7 +346,13 @@ class _HomeScreenState extends State<HomeScreen>
                             'Tickets',
                             const Color(0xFFF97316),
                             Colors.transparent,
-                            () {},
+                            () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: const TicketsScreen(),
+                                withNavBar: false,
+                              );
+                            },
                             FontWeight.normal,
                           ),
                         ),
@@ -371,7 +378,13 @@ class _HomeScreenState extends State<HomeScreen>
                         'Support',
                         const Color(0xFF3B82F6),
                         Colors.transparent,
-                        () {},
+                        () {
+                          PersistentNavBarNavigator.pushNewScreen(
+                            context,
+                            screen: const SupportScreen(),
+                            withNavBar: false,
+                          );
+                        },
                         FontWeight.normal,
                       ),
                     ),

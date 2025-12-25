@@ -6,6 +6,8 @@ import 'package:e_fast/presentation/widgets/custom_images.dart';
 import 'package:e_fast/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
+import 'component/recent_activity_section.dart';
+
 class FraudCheckScreen extends StatelessWidget {
   const FraudCheckScreen({super.key});
 
@@ -63,60 +65,7 @@ class FraudCheckScreen extends StatelessWidget {
             ),
             Utils.verticalSpace(16.0),
 
-            Container(
-              padding: Utils.symmetric(v: 10.0),
-              decoration: BoxDecoration(
-                color: whiteColor,
-                borderRadius: BorderRadius.circular(4.0),
-              ),
-              child: Column(
-                crossAxisAlignment: .start,
-                children: [
-                  Row(
-                    mainAxisAlignment: .spaceBetween,
-                    children: [
-                      CustomText(text: 'Recent Activity'),
-                      CustomText(
-                        text: 'Add New',
-                        color: primaryColor,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ],
-                  ),
-                  Utils.verticalSpace(12.0),
-                  Container(
-                    padding: Utils.symmetric(h: 8.0, v: 8.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: grayColor.withOpacity(0.2)),
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: .start,
-                      children: [
-                        CustomText(
-                          text: '01720852395',
-                          fontWeight: FontWeight.w500,
-                        ),
-                        CustomText(
-                          text: 'সাহিন আলম',
-                          color: grayColor.withOpacity(0.5),
-                        ),
-                        Utils.verticalSpace(6.0),
-                        CustomText(
-                          text:
-                              'অর্ডার করে আর খবর নাই, ফোন করলে তাও ধরে না । নাম্বার ব্লক করে দেয়। পার্সেল অর্ডার করলে সোজা না করে দিবেন। ',
-                        ),
-                        Utils.verticalSpace(6.0),
-                        CustomText(
-                          text: 'Dec 23, 2025, 08:54 PM',
-                          color: grayColor.withOpacity(0.5),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            Expanded(child: RecentActivityContainer()),
           ],
         ),
       ),
