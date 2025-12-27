@@ -3,6 +3,7 @@ import 'package:e_fast/presentation/add_parcel/add_parcel_screen.dart';
 import 'package:e_fast/presentation/auth/login_screen.dart';
 import 'package:e_fast/presentation/balance_details/balance_details_screen.dart';
 import 'package:e_fast/presentation/cancellation/cancellation_screen.dart';
+import 'package:e_fast/presentation/coverage/coverage_screen.dart';
 import 'package:e_fast/presentation/fraud_check/add_fraud_screen.dart';
 import 'package:e_fast/presentation/fraud_check/fraud_check_screen.dart';
 import 'package:e_fast/presentation/main/main_screen.dart';
@@ -14,6 +15,8 @@ import 'package:e_fast/presentation/pickup/regular_delivery_screen.dart';
 import 'package:e_fast/presentation/pickup/update_primary_address_screen.dart';
 import 'package:e_fast/presentation/pickup_and_drop/add_pickup_point_screen.dart';
 import 'package:e_fast/presentation/pickup_and_drop/pickup_drop_screen.dart';
+import 'package:e_fast/presentation/pickup_point/pickup_point_screen.dart';
+import 'package:e_fast/presentation/pricing/pricing_screen.dart';
 import 'package:e_fast/presentation/return_list/returan_list_screen.dart';
 import 'package:e_fast/presentation/splash/splash_screen.dart';
 import 'package:e_fast/presentation/summary/summary_screen.dart';
@@ -44,6 +47,9 @@ class RouteNames {
   static const String addFraudScreen = '/addFraudScreen';
   static const String ticketsScreen = '/ticketsScreen';
   static const String supportScreen = '/supportScreen';
+  static const String pickupPointScreen = '/pickupPointScreen';
+  static const String coverageScreen = '/coverageScreen';
+  static const String pricingScreen = '/pricingScreen';
 
   static Route<dynamic> generateRoutes(RouteSettings settings) {
     switch (settings.name) {
@@ -153,6 +159,21 @@ class RouteNames {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const SupportScreen(),
+        );
+      case RouteNames.pickupPointScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const PickupPointScreen(),
+        );
+      case RouteNames.coverageScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const CoverageScreen(),
+        );
+      case RouteNames.pricingScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const PricingScreen(),
         );
 
       default:

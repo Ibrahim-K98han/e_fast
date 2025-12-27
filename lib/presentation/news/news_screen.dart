@@ -1,3 +1,6 @@
+import 'package:e_fast/presentation/news/component/news_container.dart';
+import 'package:e_fast/presentation/utils/utils.dart';
+import 'package:e_fast/presentation/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
 class NewsScreen extends StatelessWidget {
@@ -5,6 +8,19 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: CustomAppBar(title: 'All News', fontSize: 18),
+      body: ListView.builder(
+        padding: Utils.symmetric(v: 10.0),
+
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: Utils.only(bottom: 14.0),
+            child: NewsContainer(),
+          );
+        },
+      ),
+    );
   }
 }
