@@ -1,3 +1,6 @@
+import 'package:e_fast/presentation/utils/app_color.dart';
+import 'package:e_fast/presentation/utils/utils.dart';
+import 'package:e_fast/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -6,18 +9,13 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      shape: BeveledRectangleBorder(
-        borderRadius: BorderRadiusGeometry.circular(0),
-      ),
+      backgroundColor: whiteColor,
+      shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero),
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF14B8A6), Color(0xFF0F766E)],
-              ),
-            ),
+            decoration: const BoxDecoration(color: whiteColor),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -26,41 +24,81 @@ class CustomDrawer extends StatelessWidget {
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: grayColor.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: const Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Color(0xFF14B8A6),
-                  ),
+                  child: const Icon(Icons.person, size: 40, color: whiteColor),
                 ),
                 const SizedBox(height: 12),
                 const Text(
-                  'Welcome!',
+                  'nurul Alam',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    color: blackColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                const Text(
-                  'user@example.com',
-                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                Text(
+                  'ID 1802598',
+                  style: TextStyle(
+                    color: blackColor.withOpacity(0.5),
+                    fontSize: 12,
+                  ),
+                ),
+                Text(
+                  'Verify Profile',
+                  style: TextStyle(color: primaryColor, fontSize: 14),
                 ),
               ],
             ),
           ),
+
           _buildDrawerItem(Icons.home, 'Home', () => Navigator.pop(context)),
+          Padding(
+            padding: Utils.symmetric(),
+            child: Divider(height: 1, color: grayColor.withOpacity(0.2)),
+          ),
           _buildDrawerItem(Icons.person, 'Profile', () {}),
+          Padding(
+            padding: Utils.symmetric(),
+            child: Divider(height: 1, color: grayColor.withOpacity(0.2)),
+          ),
           _buildDrawerItem(Icons.inventory_2, 'My Parcels', () {}),
+          Padding(
+            padding: Utils.symmetric(),
+            child: Divider(height: 1, color: grayColor.withOpacity(0.2)),
+          ),
           _buildDrawerItem(Icons.account_balance_wallet, 'Wallet', () {}),
+          Padding(
+            padding: Utils.symmetric(),
+            child: Divider(height: 1, color: grayColor.withOpacity(0.2)),
+          ),
           _buildDrawerItem(Icons.history, 'Order History', () {}),
+          Padding(
+            padding: Utils.symmetric(),
+            child: Divider(height: 1, color: grayColor.withOpacity(0.2)),
+          ),
           _buildDrawerItem(Icons.notifications, 'Notifications', () {}),
-          const Divider(),
+          Padding(
+            padding: Utils.symmetric(),
+            child: Divider(height: 1, color: grayColor.withOpacity(0.2)),
+          ),
           _buildDrawerItem(Icons.settings, 'Settings', () {}),
+
+          Padding(
+            padding: Utils.symmetric(v: 12.0),
+            child: CustomText(text: 'Help & Legal'),
+          ),
           _buildDrawerItem(Icons.help_outline, 'Help & Support', () {}),
+          Padding(
+            padding: Utils.symmetric(),
+            child: Divider(height: 1, color: grayColor.withOpacity(0.2)),
+          ),
           _buildDrawerItem(Icons.info_outline, 'About', () {}),
+          Padding(
+            padding: Utils.symmetric(),
+            child: Divider(height: 1, color: grayColor.withOpacity(0.2)),
+          ),
           _buildDrawerItem(Icons.logout, 'Logout', () {}),
         ],
       ),
@@ -69,10 +107,12 @@ class CustomDrawer extends StatelessWidget {
 
   Widget _buildDrawerItem(IconData icon, String title, VoidCallback onTap) {
     return ListTile(
-      leading: Icon(icon, color: const Color(0xFF14B8A6)),
+      leading: Icon(icon, color: grayColor.withOpacity(0.6)),
       title: Text(title),
       onTap: onTap,
-      trailing: const Icon(Icons.chevron_right, color: Colors.grey),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 16,
+      ), // optional: remove extra horizontal padding
     );
   }
 }
