@@ -1,6 +1,7 @@
 import 'package:e_fast/presentation/add_balance/add_balance_screen.dart';
 import 'package:e_fast/presentation/add_parcel/add_parcel_screen.dart';
 import 'package:e_fast/presentation/cancellation/cancellation_screen.dart';
+import 'package:e_fast/presentation/coverage/coverage_screen.dart';
 import 'package:e_fast/presentation/fraud_check/fraud_check_screen.dart';
 import 'package:e_fast/presentation/home/component/custom_drawer.dart';
 import 'package:e_fast/presentation/home/component/header_section.dart';
@@ -9,14 +10,17 @@ import 'package:e_fast/presentation/parcel/parcel_screen.dart';
 import 'package:e_fast/presentation/payment/payment_screen.dart';
 import 'package:e_fast/presentation/pickup/pickup_request.dart';
 import 'package:e_fast/presentation/pickup_and_drop/pickup_drop_screen.dart';
+import 'package:e_fast/presentation/pickup_point/pickup_point_screen.dart';
+import 'package:e_fast/presentation/pricing/pricing_screen.dart';
 import 'package:e_fast/presentation/return_list/returan_list_screen.dart';
 import 'package:e_fast/presentation/summary/summary_screen.dart';
+import 'package:e_fast/presentation/support/support_screen.dart';
+import 'package:e_fast/presentation/tickets/tickets_screen.dart';
 import 'package:e_fast/presentation/utils/app_color.dart';
 import 'package:e_fast/presentation/utils/app_image.dart';
 import 'package:e_fast/presentation/utils/utils.dart';
 import 'package:e_fast/presentation/widgets/custom_images.dart';
 import 'package:e_fast/presentation/widgets/custom_text.dart';
-import 'package:e_fast/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -345,7 +349,13 @@ class _HomeScreenState extends State<HomeScreen>
                             'Tickets',
                             const Color(0xFFF97316),
                             Colors.transparent,
-                            () {},
+                            () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                screen: const TicketsScreen(),
+                                withNavBar: false,
+                              );
+                            },
                             FontWeight.normal,
                           ),
                         ),
@@ -371,7 +381,13 @@ class _HomeScreenState extends State<HomeScreen>
                         'Support',
                         const Color(0xFF3B82F6),
                         Colors.transparent,
-                        () {},
+                        () {
+                          PersistentNavBarNavigator.pushNewScreen(
+                            context,
+                            screen: const SupportScreen(),
+                            withNavBar: false,
+                          );
+                        },
                         FontWeight.normal,
                       ),
                     ),
@@ -382,7 +398,13 @@ class _HomeScreenState extends State<HomeScreen>
                         'Pickup Points',
                         const Color(0xFF14B8A6),
                         Colors.transparent,
-                        () {},
+                        () {
+                          PersistentNavBarNavigator.pushNewScreen(
+                            context,
+                            screen: const PickupPointScreen(),
+                            withNavBar: false,
+                          );
+                        },
                         FontWeight.normal,
                       ),
                     ),
@@ -393,7 +415,13 @@ class _HomeScreenState extends State<HomeScreen>
                         'Coverage',
                         const Color(0xFF2563EB),
                         Colors.transparent,
-                        () {},
+                        () {
+                          PersistentNavBarNavigator.pushNewScreen(
+                            context,
+                            screen: const CoverageScreen(),
+                            withNavBar: false,
+                          );
+                        },
                         FontWeight.normal,
                       ),
                     ),
@@ -404,7 +432,13 @@ class _HomeScreenState extends State<HomeScreen>
                         'Pricing',
                         const Color(0xFF9333EA),
                         Colors.transparent,
-                        () {},
+                        () {
+                          PersistentNavBarNavigator.pushNewScreen(
+                            context,
+                            screen: const PricingScreen(),
+                            withNavBar: false,
+                          );
+                        },
                         FontWeight.normal,
                       ),
                     ),

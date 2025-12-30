@@ -6,66 +6,62 @@ import 'package:e_fast/presentation/widgets/custom_images.dart';
 import 'package:e_fast/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
-import 'component/recent_activity_section.dart';
-
-class FraudCheckScreen extends StatelessWidget {
-  const FraudCheckScreen({super.key});
+class CoverageScreen extends StatelessWidget {
+  const CoverageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
-      appBar: CustomAppBar(title: 'Fraud Check'),
+      backgroundColor: const Color(0xFFF4F7FA),
+      appBar: CustomAppBar(title: 'Coverage'),
       body: Padding(
         padding: Utils.symmetric(v: 10.0),
         child: Column(
           children: [
             Container(
-              padding: Utils.symmetric(v: 10.0),
-              decoration: BoxDecoration(
-                color: whiteColor,
-                borderRadius: BorderRadius.circular(4.0),
-              ),
+              padding: Utils.symmetric(h: 14.0, v: 10.0),
+              decoration: BoxDecoration(color: whiteColor),
               child: Column(
                 children: [
+                  CustomText(
+                    text: 'Search Your Area',
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  Utils.verticalSpace(8.0),
+                  CustomText(text: 'You can easily search your area from here'),
+                  Utils.verticalSpace(8.0),
                   Row(
                     children: [
                       Expanded(
                         child: TextFormField(
-                          decoration: InputDecoration(hintText: 'Enter Number'),
+                          decoration: InputDecoration(
+                            hintText: 'Search coverage area',
+                          ),
                         ),
                       ),
-                      Utils.horizontalSpace(12.0),
+                      Utils.horizontalSpace(8.0),
                       Container(
-                        height: 45,
-                        width: 45,
-                        padding: Utils.all(value: 10.0),
+                        height: 42,
+                        width: 40,
+                        padding: Utils.all(value: 8.0),
                         decoration: BoxDecoration(
                           color: primaryColor,
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         child: CustomImage(
                           path: AppImage.notification,
+                          color: whiteColor,
                           width: 20,
                           height: 20,
-                          color: whiteColor,
                         ),
                       ),
                     ],
                   ),
-                  CustomImage(
-                    path: AppImage.orderTracking,
-                    width: 100,
-                    height: 150,
-                  ),
-                  CustomText(text: 'Check fraud by phone number'),
-                  Utils.verticalSpace(10.0),
+                  Utils.verticalSpace(20.0),
                 ],
               ),
             ),
-            Utils.verticalSpace(16.0),
-
-            Expanded(child: RecentActivityContainer()),
           ],
         ),
       ),
