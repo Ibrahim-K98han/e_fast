@@ -88,6 +88,7 @@ class AuthController extends GetxController {
           emailController.clear();
           passwordController.clear();
           loader = false;
+
           Future.delayed(const Duration(milliseconds: 10), () {
             update();
           });
