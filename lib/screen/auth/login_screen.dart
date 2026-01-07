@@ -1,11 +1,11 @@
 import 'package:e_fast/controllers/auth_controller.dart';
 import 'package:e_fast/screen/auth/component/remember_component.dart';
+import 'package:e_fast/screen/auth/sign_up.dart';
 import 'package:e_fast/screen/utils/app_color.dart';
 import 'package:e_fast/screen/utils/size_config.dart';
 import 'package:e_fast/screen/utils/utils.dart';
 import 'package:e_fast/screen/widgets/custom_text.dart';
 import 'package:e_fast/screen/widgets/primary_button.dart';
-import 'package:e_fast/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return GetBuilder<AuthController>(
       init: AuthController(),
       builder: (auth) => Scaffold(
+        backgroundColor: whiteColor,
         resizeToAvoidBottomInset: true,
         body: Padding(
           padding: Utils.symmetric(),
@@ -98,11 +99,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         Row(
                           mainAxisAlignment: .center,
                           children: [
-                            CustomText(text: 'Own a Business? '),
-                            CustomText(
-                              text: 'Become Merchant',
-                              color: primaryColor,
-                              fontWeight: FontWeight.w600,
+                            CustomText(text: 'Don\'t have an account? '),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(SignUp());
+                              },
+                              child: CustomText(
+                                text: 'Sign up',
+                                color: primaryColor,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ],
                         ),

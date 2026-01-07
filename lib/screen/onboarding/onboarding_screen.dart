@@ -1,4 +1,5 @@
 import 'package:e_fast/screen/auth/login_screen.dart';
+import 'package:e_fast/screen/auth/sign_up.dart';
 import 'package:e_fast/screen/onboarding/data/onboard_data.dart';
 import 'package:e_fast/screen/utils/app_color.dart';
 import 'package:e_fast/screen/utils/utils.dart';
@@ -54,8 +55,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   padding: Utils.symmetric(),
                   child: PrimaryButton(
                     borderRadiusSize: 4.0,
-                    text: 'Become a Merchant',
-                    onPressed: () {},
+                    text: 'Sign Up',
+                    onPressed: () {
+                      Get.to(SignUp());
+                    },
                   ),
                 ),
                 Utils.verticalSpace(16.0),
